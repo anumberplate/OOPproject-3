@@ -55,9 +55,15 @@ public class BarChartPanel extends JPanel {
         int titleWidth = g2.getFontMetrics().stringWidth(title);
         g2.drawString(title, (width - titleWidth) / 2, 25);
 
-        // Axis label
+        // Y-axis label
         g2.setFont(new Font("Arial", Font.PLAIN, 12));
         g2.drawString("Average Score", 10, chartY - 10);
+
+        // X-axis label
+        FontMetrics fm = g2.getFontMetrics();
+        String xAxisLabel = "Course";
+        int xAxisLabelWidth = fm.stringWidth(xAxisLabel);
+        g2.drawString(xAxisLabel, chartX + chartWidth / 2 - xAxisLabelWidth / 2, chartY + chartHeight + 50);
 
         // Bars
         int index = 0;
