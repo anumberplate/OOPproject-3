@@ -58,6 +58,21 @@ public class CSVLoader {
         }
 
         if (isStudent) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] p = line.split(",");
+                if (p.length != 4) continue;
+
+                try {
+                    // For student files, create a dummy activity record to indicate student processed
+                    list.add(new CSVRecord(
+                            "STUDENT_" + p[0], p[0], "N/A",
+                            0.0, 0.0, "STUDENT_DATA"
+                    ));
+                } catch (Exception e) {
+                    System.out.println("Skipping bad student row: " + line);
+                }
+            }
             return list;
         }
 
